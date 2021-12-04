@@ -1,6 +1,6 @@
 [![mnaimi's 42Project Score](https://badge42.herokuapp.com/api/project/mnaimi/printf)](https://github.com/JaeSeoKim/badge42)
 
-# *42 Network* version of `printf()` 
+# *42 Network* version of `printf()`
 
 _**Note:** I won't be covering everything about the original `printf()`, just the stuff we need to know to recode the *42 Network* version._
 
@@ -12,7 +12,7 @@ _**Note:** I won't be covering everything about the original `printf()`, just th
 
 ## Parameter field
 
-_This is a POSIX extension and not in C99_
+_**Note** This is a POSIX extension and not in C99_
 
 The Parameter field takes as input the index of the parameter _aka_ the `n`th parameter _(or 'the `n`th **argument**', whatever you want to call it)_ followed by a `$` Dollar sign. After that we can apply some flags just as we would do normally.
 
@@ -54,7 +54,7 @@ int main(void)
 Output:
 
 file.c:5:26: error: missing $ operand number in format
-5   |     printf(%3$d; %1$d; %d; %2$d",16, 17, 18, 19)
+5   |     printf("%3$d; %1$d; %d; %2$d",16, 17, 18, 19)
     |            ^~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -71,7 +71,7 @@ When used, the content becomes Left-Justified _(instead of the default Right-Jus
 
 int main(void)
 {
-	printf("Without the '-' flag:\n");
+    printf("Without the '-' flag:\n");
     printf("\"%12s\"\n\n", "Hello");
     printf("Without the '-' flag:\n");
     printf("\"%-12s\"\n", "Hello");
@@ -156,6 +156,7 @@ With the ' ' (space character) flag:
  420
 -420
 ```
+
 _**Remember:** this flag is ignored if the `+` flag exists._
 
 ### The `0` flag
@@ -169,7 +170,7 @@ When used with the `%d` _or_ `%i` _or_ `%x` _or_ `%X`, and with the **Width** fl
 
 int main(void)
 {
-	printf("Without the '0' flag:\n");
+ printf("Without the '0' flag:\n");
     printf("\"%5d\"\n\n", 1);
     printf("With the '0' flag:\n");
     printf("\"%05d\"\n", 1);
@@ -200,7 +201,7 @@ When used with the `%x` _or_ `%X` formats, it prefixes the output with a `0x` _o
 
 int main(void)
 {
-	printf("Without the '#' flag:\n");
+ printf("Without the '#' flag:\n");
     printf("%x\n", 180);
     printf("%X\n\n", 180);
     printf("With the '#' flag:\n");
@@ -221,6 +222,7 @@ With the '#' flag:
 0xb4
 0XB4
 ```
+
 _The `#` flag should not be used with `c` or `d` or `i` or `u` or `s` types._
 
 ### Width field
@@ -236,15 +238,17 @@ The width specification can be an asterisk `*`, in which case an argument —fro
 ```c
 int main(void)
 {
-	printf("Without the Width:\n");
+ printf("|00| Without the Width:\n");
     printf("\"%d\"\n\n", 69420);
-    printf("With the Width:\n");
+    printf("|01| With the Width:\n");
     printf("\"%10d\"\n\n", 69420);
-    printf("With the Width:\n");
+    printf("|02| With the Width:\n");
     printf("\"%-10d\"\n\n", 69420);
-    printf("With the Width:\n");
+    printf("|03| With the Width:\n");
     printf("\"%5d\"\n\n", 69420);
-    printf("With the Width:\n");
+    printf("|04| With the Width:\n");
+    printf("\"%2d\"\n\n", 69420);
+    printf("|05| With the Width:\n");
     printf("\"%*d\"\n", 15, 69420);
     return (0);
 }
@@ -253,19 +257,22 @@ int main(void)
 ```text
 Output:
 
-Without the Width:
+|00| Without the Width:
 "69420"
 
-With the Width:
+|01| With the Width:
 "     69420"
 
-With the Width:
+|02| With the Width:
 "69420     "
 
-With the Width:
+|03| With the Width:
 "69420"
 
-With the Width:
+|04| With the Width:
+"69420"
+
+|05| With the Width:
 "          69420"
 ```
 
@@ -277,29 +284,116 @@ The Precision specification can be an asterisk `*`, in which case an argument �
 
 In our case, the precision will only be applied to `%s`, `%d` and `%i`. If the specified width exceeds the total length of the string, the string gets printed, and that's all, no spaces, and no `0`'s. If it's applied to a digit _(`%d` or `%i`)_, and the specified length exceeds the total length of the digits in the given number, the rest is filled with `0`'s, but if it's the opposite, and the specified length is smaller than the total length of the number, it doesn't get truncated.
 
-_**Note** that the precision field doesn't work for `%c`, and that it outputs a warning —but does work— when used with `%p`, _
+_**Note** that the precision field doesn't work with `%c`, and outputs a warning —but does work— when used with `%p`, and_
+
 - **Example:**
 
 ```c
-
+int main(void)
+{
+    printf("Without the Precision:\t%%s\n");
+    printf("\"%s\"\n\n", "Hello, world!");
+    printf("With the Precision:\t%%.10s\n");
+    printf("\"%.10s\"\n\n", "Hello, world!");
+    printf("With the Precision:\t%%.15s\n");
+    printf("\"%.15s\"\n\n", "Hello, world!");
+    printf("With the Precision:\t%%-15.10s\n");
+    printf("\"%-15.10s\"\n\n", "Hello, world!");
+    printf("With the Precision:\t%%15.10s\n");
+    printf("\"%15.10s\"\n\n", "Hello, world!");
+    return (0);
+}
 ```
+
+```text
+Output:
+
+Without the Precision:  %s
+"Hello, world!"
+
+With the Precision:     %.10s
+"Hello, wor"
+
+With the Precision:     %.15s
+"Hello, world!"
+
+With the Precision:     %-15.10s
+"Hello, wor     "
+
+With the Precision:     %15.10s
+"     Hello, wor"
+```
+
 ___
 
 ## Sources
 
-Wikipedia: https://en.wikipedia.org/wiki/Printf_format_string
+Wikipedia: [https://en.wikipedia.org/wiki/Printf_format_string](https://en.wikipedia.org/wiki/Printf_format_string)
 
-IBM's Docs: https://www.ibm.com/docs/en/i/7.4?topic=functions-printf-print-formatted-characters
+IBM's Docs: [https://www.ibm.com/docs/en/i/7.4?topic=functions-printf-print-formatted-characters](https://www.ibm.com/docs/en/i/7.4?topic=functions-printf-print-formatted-characters)
 
 Other random websites:
 
-- <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html" target="_blank">https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html</a>
+- [https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html)
 
-- <a href="https://flylib.com/books/en/2.254.1/using_flags_in_the_printf_format_string.html" target="_blank">https://flylib.com/books/en/2.254.1/using_flags_in_the_printf_format_string.html</a>
+- [https://flylib.com/books/en/2.254.1/using_flags_in_the_printf_format_string.html](https://flylib.com/books/en/2.254.1/using_flags_in_the_printf_format_string.html)
 
-- <a href="https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output" target="_blank">https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output</a>
+- [https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output](https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output)
 
-- <a href="https://alvinalexander.com/programming/printf-format-cheat-sheet/" target="_blank">https://alvinalexander.com/programming/printf-format-cheat-sheet/</a>
+- [https://alvinalexander.com/programming/printf-format-cheat-sheet/](https://alvinalexander.com/programming/printf-format-cheat-sheet/)
 
 ___
+<!--
 
+```c
+
+    printf("A string: %s\n", "blue");
+
+    printf("A Signed Decimal number: %d\n", 12345);
+
+    printf("A Signed base10 integer: %i\n", 1234);
+
+    printf("An Unsigned value: %u\n", 150);
+
+    printf("A Hexadecimal (lowercase): %x\n", 255);
+
+    printf("A Hexadecimal (uppercase): %X\n", 255);
+
+    printf("A decimal number with width: %04d\n", 25);
+
+    printf("The percentage sign %%\n", 10);
+
+```
+```c
+#include <stdio.h>
+#include <stdarg.h>
+
+int print(const char *s, ...)
+{
+    va_list arg_container;
+    long long   the_arg;
+    size_t i = 0;
+    
+    va_start(arg_container, s);
+    the_arg = va_arg(arg_container, long long);
+    
+    
+    while (i++ < 5)
+    {
+        printf("%lld\n", the_arg);
+        the_arg = va_arg(arg_container, long long);
+    }
+    va_end(arg_container);
+}
+
+int main(void)
+{
+    print("start", 2, 2, 2, 2, 2, 6, 7, 8, 9);
+    return 0;
+}
+```
+__
+
+## Quick explanation of `<stdargs.h>`
+
+-->
