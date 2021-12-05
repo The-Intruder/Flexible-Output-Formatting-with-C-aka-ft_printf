@@ -54,7 +54,7 @@ int main(void)
 Output:
 
 file.c:5:26: error: missing $ operand number in format
-5   |     printf("%3$d; %1$d; %d; %2$d",16, 17, 18, 19)
+5   |     printf("%3$d; %1$d; %d; %2$d", 16, 17, 18, 19)
     |            ^~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -342,6 +342,35 @@ Other random websites:
 
 - [https://alvinalexander.com/programming/printf-format-cheat-sheet/](https://alvinalexander.com/programming/printf-format-cheat-sheet/)
 
+
+```c
+#include <stdio.h>
+#include <stdarg.h>
+
+int print(const char *s, ...)
+{
+    va_list         arg_container;
+    long double     the_arg;
+    size_t i = 0;
+    
+    va_start(arg_container, s);
+    the_arg = va_arg(arg_container, long long);
+    
+    
+    while (i++ < 5)
+    {
+        printf("%lld\n", the_arg);
+        the_arg = va_arg(arg_container, long long);
+    }
+    va_end(arg_container);
+}
+
+int main(void)
+{
+    print("start", 2, 2, 2, 2, 2, 6, 7, 8, 9);
+    return 0;
+}
+```
 ___
 <!--
 
@@ -370,8 +399,8 @@ ___
 
 int print(const char *s, ...)
 {
-    va_list arg_container;
-    long long   the_arg;
+    va_list     arg_container;
+    typeof()   the_arg;
     size_t i = 0;
     
     va_start(arg_container, s);
