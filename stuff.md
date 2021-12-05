@@ -12,10 +12,21 @@
 ```
 
 The justification of the content should be the first thing to handle
-the space flag is ignored if the `+` flag exists
-if the `0` flag isn't specified, the default prepends spaces.
+
+The `space` flag is ignored if the `+` flag exists
+The `0` flag is ignored if the `-` flag exists
+The `0` flag is ignored if the `.` precision exists with `d`
+
+The `+` flag shouldn't be used with `x` and `X`
+
+If the `0` flag isn't specified, the default prepends spaces.
+
+The `#` shouldn't be used with `d`
+the `+` `space` `0` `#` should not be used with `c`
+
 The precision field gets executed before the width field
 
+ 
 Functions needed
 
 - [ ] ft_strchr
