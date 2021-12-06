@@ -14,7 +14,7 @@
 
 /* -------------------------------------------------------------------------- */
 
-int ft_printf(const char *str_in,)
+int ft_printf(const char *str_in)
 {
 	t_fields *data;
 	size_t i;

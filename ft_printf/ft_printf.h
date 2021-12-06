@@ -65,7 +65,6 @@ int		ft_atoi(const char *str);
 /* ----------------------- */
 void		set_placeholder_fields(t_fields *field_data, t_flags *f, \
 	size_t *w, size_t p, char t);
-
 t_flags		*get_flags(char **field_ptr);
 size_t		get_width(char **field_ptr);
 t_fields	*get_data(char *field_ptr, size_t *printd_outpt_len);
