@@ -44,7 +44,12 @@ typedef struct s_fields
 } t_fields;
 
 /* ------------------------------ PROTOTYPES -------------------------------- */
-int		ft_printf(const char *str_in, ...);
+int		ft_printf(const char *str_in);
+int		is_flag(char c);
+int		is_true_digit(char c);
+int		is_digit(char c);
+int		is_type(char c);
+
 size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -52,9 +57,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putchar(char c);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr(int n);
-int		is_width(char c);
-int		is_precision(char *s);
-int		is_flag(char c);
 int		ft_isspace(char c);
 int		ft_atoi(const char *str);
 
@@ -63,9 +65,10 @@ int		ft_atoi(const char *str);
 /* ----------------------- */
 void		set_placeholder_fields(t_fields *field_data, t_flags *f, \
 	size_t *w, size_t p, char t);
-t_flags		*get_flags(const char *field_ptr);
-size_t		get_width(const char *field_ptr);
-t_fields	*get_data(const char *field_ptr, size_t *printd_outpt_len);
+
+t_flags		*get_flags(char **field_ptr);
+size_t		get_width(char **field_ptr);
+t_fields	*get_data(char *field_ptr, size_t *printd_outpt_len);
 
 /* ---------------------------------- END ----------------------------------- */
 
