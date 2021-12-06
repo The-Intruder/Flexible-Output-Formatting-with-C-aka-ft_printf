@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	printf("", );
+	ft_printf("%+-0# 20.15d");
 	return (0);
 }

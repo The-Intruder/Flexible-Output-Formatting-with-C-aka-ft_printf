@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:18:44 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/04 23:04:12 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/06 22:09:05 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@ int ft_printf(const char *str_in)
 			ft_putchar(str_in[++i]);
 		else if (str_in[i] == '%' && str_in[i + 1] != '%')
 		{
-			data = get_data(&str_in[i + 1], &outpt_len);
+			data = get_data((char *)&str_in[i + 1], &outpt_len);
+			printf("minus:\t%d\n", data -> flags -> minus);
+			printf("plus:\t%d\n", data -> flags -> plus);
+			printf("space:\t%d\n", data -> flags -> space);
+			printf("zero:\t%d\n", data -> flags -> zero);
+			printf("hash:\t%d\n", data -> flags -> hash);
+			printf("type:\t%c\n", data -> type);
+			printf("width:\t%zu\n", data -> width);
+			printf("prcsn:\t%zu\n", data -> precision);
+			return (0);
 		}
 		else
 			ft_putchar(str_in[i]);
