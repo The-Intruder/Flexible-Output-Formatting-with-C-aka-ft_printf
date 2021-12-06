@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	ft_printf("%+-0# 20.15d");
+	ft_printf("srjtjrtjewtj %+-0# 20.15d kuasigalkghiug");
 	return (0);
 }

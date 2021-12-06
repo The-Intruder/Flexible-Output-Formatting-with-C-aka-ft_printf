@@ -10,15 +10,15 @@
 ################################################################################
 ################################################################################
 
-NC=\033[31;0m
-RED=\033[0;31;1m
-PUR=\033[0;35;1m
-YEL=\033[0;33;1m
-GRA=\033[0;37;1m
-CYN=\033[0;36;1m
-GRN=\033[0;32;1m
-MGN=\033[0;35;1m
-BLU=\033[0;34;1m
+NC := \033[31;0m
+RED := \033[0;31;1m
+PUR := \033[0;35;1m
+YEL := \033[0;33;1m
+GRA := \033[0;37;1m
+CYN := \033[0;36;1m
+GRN := \033[0;32;1m
+MGN := \033[0;35;1m
+BLU := \033[0;34;1m
 
 CC := gcc
 CC_FLAGS := -Wall -Wextra -Werror
@@ -34,16 +34,16 @@ NAME := libftprintf.a
 all: fclean $(NAME)
 
 $(NAME): $(OBJS) ft_printf.h
-	@echo "\n$(BLU)Creating $(NAME) archive file ...$(NC)\n"
+	@echo "\n$(BLU)Creating $(GRA)$(NAME) $(BLU)archive file ...$(NC)\n"
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GRN)Library created successfully ...\n$(NC)"
+	@echo "\n$(GRN)Library created successfully ...\n$(NC)"
 
 %.o: %.c
-	@echo "$(PUR)Creating Object file from $< file ...\n$(NC)"
+	@echo "$(PUR)Creating Object file from $(GRA)$< $(PUR)file ...\n$(NC)"
 	@$(CC) $(CC_FLAGS) -o $@ -c $<
 
 compile: re main.c
-	@echo "\n$(YEL)Compiling the main.c ...\n$(NC)"
+	@echo "\n$(YEL)Compiling the $(GRA)main.c $(YEL)...\n\n$(NC)"
 	@$(CC) $(CC_FLAGS) main.c -L. -lftprintf
 
 execute: a.out
@@ -54,7 +54,7 @@ clean:
 	@rm -f *.o
 
 fclean: clean
-	@echo "$(RED)Cleaning up the $(NAME) archive file ...\n\n$(NC)"
+	@echo "$(RED)Cleaning up the $(GRA)$(NAME)$(RED) archive file ...\n\n$(NC)"
 	@rm -f $(NAME)
 
 re: fclean all

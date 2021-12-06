@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:18:44 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/06 22:09:05 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 00:50:02 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 
 int ft_printf(const char *str_in)
 {
-	t_fields *data;
-	size_t i;
-	size_t outpt_len;
+	t_fields	*data;
+	size_t		i;
+	size_t		outpt_len;
+	char		*pocessed_str;
 
 	i = 0;
 	outpt_len = 0;
@@ -28,7 +29,9 @@ int ft_printf(const char *str_in)
 			ft_putchar(str_in[++i]);
 		else if (str_in[i] == '%' && str_in[i + 1] != '%')
 		{
-			data = get_data((char *)&str_in[i + 1], &outpt_len);
+			data = get_data((char *)&str_in[++i], &outpt_len, &i);
+			processed_str = ;
+			/*
 			printf("minus:\t%d\n", data -> flags -> minus);
 			printf("plus:\t%d\n", data -> flags -> plus);
 			printf("space:\t%d\n", data -> flags -> space);
@@ -36,8 +39,7 @@ int ft_printf(const char *str_in)
 			printf("hash:\t%d\n", data -> flags -> hash);
 			printf("type:\t%c\n", data -> type);
 			printf("width:\t%zu\n", data -> width);
-			printf("prcsn:\t%zu\n", data -> precision);
-			return (0);
+			printf("prcsn:\t%zu\n", data -> precision);*/
 		}
 		else
 			ft_putchar(str_in[i]);

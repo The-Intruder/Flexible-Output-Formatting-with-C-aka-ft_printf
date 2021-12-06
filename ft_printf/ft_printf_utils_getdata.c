@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:14 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/06 22:30:14 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 00:29:52 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,13 @@ char    get_type(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-t_fields *get_data(char *field_ptr, size_t *outpt_len)
+t_fields *get_data(char *field_ptr, size_t *outpt_len, size_t *index)
 {
 	t_fields	*placeholder_data;
+	char		*initial_ptr;
 
-	outpt_len = 0;
+	*outpt_len = 0;
+	initial_ptr = field_ptr;
 	placeholder_data = (t_fields *)ft_calloc(1, sizeof(t_fields));
 	if (!placeholder_data)
 		return (NULL);
@@ -94,7 +96,7 @@ t_fields *get_data(char *field_ptr, size_t *outpt_len)
 	placeholder_data -> width = get_width(&field_ptr);
 	placeholder_data -> precision = get_precision(&field_ptr);
 	placeholder_data -> type = get_type(&field_ptr);
-
+	*index += field_ptr - initial_ptr;
 	return (placeholder_data);
 }
 

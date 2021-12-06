@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:12:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/06 21:49:54 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 00:31:03 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ int		ft_atoi(const char *str);
 /* ----------------------- */
 /* ft_printf sub-functions */
 /* ----------------------- */
-void		set_placeholder_fields(t_fields *field_data, t_flags *f, \
-	size_t w, size_t p, char t);
 t_flags		*get_flags(char **field_ptr);
 size_t		get_width(char **field_ptr);
-t_fields	*get_data(char *field_ptr, size_t *printd_outpt_len);
+t_fields	*get_data(char *field_ptr, size_t *outpt_len, size_t *index);
 
 /* ---------------------------------- END ----------------------------------- */
 
