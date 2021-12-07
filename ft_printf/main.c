@@ -15,15 +15,11 @@
 int	main(void)
 {
 	int a;
-	//ft_printf("srjtjrtjewtj %+-0# 20.15d kuasigalkghiug");
-	a = ft_printf("abcd %c", '0');
-	putchar('\n');
+	a = printf("%s\n", "-");
 	ft_putnbr(a);
-	putchar('\n');
-	a = printf("abcd %c", '0');
-	putchar('\n');
+	ft_putchar('\n');
+	a = ft_printf("%s\n", "-");
 	ft_putnbr(a);
-	putchar('\n');
 	/*ft_printf(" %c ", '0');
 	putchar('\n');
 	printf(" %c ", '0');

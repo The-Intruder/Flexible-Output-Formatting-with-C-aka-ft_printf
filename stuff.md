@@ -11,7 +11,8 @@
 #define RESET "\033[0m"
 ```
 
-The justification of the content should be the first thing to handle
+The justification of the content should be the first thing 
+to handle
 
 The `space` flag is ignored if the `+` flag exists
 The `0` flag is ignored if the `-` flag exists

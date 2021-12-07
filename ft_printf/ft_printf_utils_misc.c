@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:07:32 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 16:05:18 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 23:29:58 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
@@ -79,30 +81,45 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 /* -------------------------------------------------------------------------- */
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, size_t *outpt_len)
 {
 	write(1, &c, 1);
+	*outpt_len += 1;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void	ft_putnchar(char c, size_t n)
+void	ft_putnchar(char c, size_t n, size_t *outpt_len)
 {
 	while (n-- != 0)
 		write(1, &c, 1);
+	*outpt_len += n;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void	ft_putstr(char *s)
+void	ft_putstr(char *s, size_t *outpt_len)
 {
 	if (!s)
 		return ;
-	write(1, s, ft_strlen(s));
+	else
+		write(1, s, ft_strlen(s));
+	*outpt_len += ft_strlen(s);
 }
 
 /* -------------------------------------------------------------------------- */
 
+void	ft_putstr_len(char *s, size_t len, size_t *outpt_len)
+{
+	if (!s || !len)
+		return ;
+	else
+		write(1, s, len);
+	*outpt_len += len;
+}
+
+/* -------------------------------------------------------------------------- */
+/*
 void	ft_putnbr(int n)
 {
 	if (n >= 0 && n < 10)
@@ -120,7 +137,7 @@ void	ft_putnbr(int n)
 		ft_putnbr(n % 10);
 	}
 }
-
+*/
 /* -------------------------------------------------------------------------- */
 
 int	ft_isspace(char c)

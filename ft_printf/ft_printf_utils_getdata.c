@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:14 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 18:54:49 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 23:00:03 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ size_t get_width(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-size_t get_precision(char **field_ptr)
+int get_precision(char **field_ptr)
 {
-	size_t	the_precision;
+	int	the_precision;
 
-	the_precision = 0;
+	the_precision = -1;
 	if (**field_ptr == '.' && ft_isdigit(*(*field_ptr + 1)))
 	{
 		*field_ptr += 1;

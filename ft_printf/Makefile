@@ -33,7 +33,7 @@ NAME := libftprintf.a
 
 all: $(NAME)
 
-bonus : fclean all
+bonus : re
 
 $(NAME): $(OBJS) ft_printf.h
 	@echo "\n$(BLU)Creating $(GRA)$(NAME) $(BLU)archive file ...$(NC)\n"

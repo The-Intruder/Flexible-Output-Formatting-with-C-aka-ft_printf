@@ -28,12 +28,20 @@ the `#` flag doesn't work with the `%d` type
 
 ### `%s` type
 
+- `-` flag **does** work with the `%s` type
+- `width` flag **does** work with the `%s` type
+- `.` flag **does** work with the `%s` type
+
+- `space` flag **doesn't** work with the `%s` type
+- `#` flag **doesn't** work with the `%s` type
 - `+` flag **doesn't** work with the `%s` type
-- `0` flag **doe**
+- `0` flag **doesn't** work with the `%s` type
 
 
 
 
-Don't forget to make a function that counts the number of chars in an `int` passed as argument.
+
+Don't forget to make a function that counts the number of 
+chars in an `int` passed as argument.
 
 
