@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:14 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 16:45:57 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 18:54:49 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 /* -------------------------------------------------------------------------- */
 
-t_flags *get_flags(char **field_ptr)
+void	get_flags(char **field_ptr, t_flags *flags)
 {
-	t_flags *flags;
 	char flag;
 
-	flags = (t_flags *)ft_calloc(1, sizeof(t_flags));
-	if (!flags)
-		return (NULL);
 	while (**field_ptr && ft_isflag(**field_ptr))
 	{
 		flag = ft_isflag(**field_ptr);
@@ -37,7 +33,6 @@ t_flags *get_flags(char **field_ptr)
 			flags -> hash = 1;
 		*field_ptr += 1;
 	}
-	return (flags);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -82,22 +77,17 @@ char    get_type(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-t_fields *get_data(char *field_ptr, size_t *outpt_len, size_t *index)
+void	get_data(t_fields *data, t_flags *flags, char *field_ptr, size_t *index)
 {
-	t_fields	*placeholder_data;
 	char		*initial_ptr;
 
-	*outpt_len = 0;
 	initial_ptr = field_ptr;
-	placeholder_data = (t_fields *)ft_calloc(1, sizeof(t_fields));
-	if (!placeholder_data)
-		return (NULL);
-	placeholder_data -> flags = get_flags(&field_ptr);
-	placeholder_data -> width = get_width(&field_ptr);
-	placeholder_data -> precision = get_precision(&field_ptr);
-	placeholder_data -> type = get_type(&field_ptr);
+	data -> flags = flags;
+	get_flags(&field_ptr, flags);
+	data -> width = get_width(&field_ptr);
+	data -> precision = get_precision(&field_ptr);
+	data -> type = get_type(&field_ptr);
 	*index += field_ptr - initial_ptr;
-	return (placeholder_data);
 }
 
 /* -------------------------------------------------------------------------- */

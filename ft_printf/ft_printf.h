@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:12:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 16:20:17 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 18:55:45 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ int		ft_atoi(const char *str);
 /* ----------------------- */
 /* ft_printf sub-functions */
 /* ----------------------- */
-t_flags		*get_flags(char **field_ptr);
-size_t		get_width(char **field_ptr);
-t_fields	*get_data(char *field_ptr, size_t *outpt_len, size_t *index);
-
-void		process_data(t_fields *data, va_list *ap, size_t *outpt_len);
-size_t		process_char(t_fields *data, char c);
+void	get_flags(char **field_ptr, t_flags *flags);
+size_t	get_width(char **field_ptr);
+void	get_data(t_fields *data, t_flags *flags, char *field_ptr, \
+	size_t *index);
+void	process_data(t_fields *data, va_list *ap, size_t *outpt_len);
+size_t	process_char(t_fields *data, char c);
 /* ---------------------------------- END ----------------------------------- */
 
 #endif

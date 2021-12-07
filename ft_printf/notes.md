@@ -26,5 +26,14 @@ the `#` flag doesn't work with the `%d` type
 - `.` flag **doesn't** work with the `%c` type
 - `#` flag **doesn't** work with the `%c` type
 
+### `%s` type
+
+- `+` flag **doesn't** work with the `%s` type
+- `0` flag **doe**
+
+
+
 
 Don't forget to make a function that counts the number of chars in an `int` passed as argument.
+
+

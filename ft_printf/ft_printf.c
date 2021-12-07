@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:18:44 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 16:08:23 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 18:45:05 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 int ft_printf(const char *str_in, ...)
 {
-	t_fields	*data;
+	t_fields	data;
+	t_flags		flags;
 	size_t		i;
 	size_t		outpt_len;
 	va_list		ap;
@@ -32,8 +33,8 @@ int ft_printf(const char *str_in, ...)
 			ft_putchar(str_in[++i]);
 		else if (str_in[i] == '%' && str_in[i + 1] != '%')
 		{
-			data = get_data((char *)&str_in[++i], &outpt_len, &i);
-			process_data(data, &ap, &outpt_len);
+			get_data(&data, &flags, (char *)&str_in[++i], &i);
+			process_data(&data, &ap, &outpt_len);
 
 			//ft_putchar('\n');
 			/*
@@ -52,6 +53,7 @@ int ft_printf(const char *str_in, ...)
 		i++;
 		outpt_len++;
 	}
+
 	return (outpt_len);
 }
 

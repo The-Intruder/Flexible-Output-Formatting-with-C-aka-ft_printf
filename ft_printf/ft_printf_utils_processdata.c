@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 13:18:00 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 16:22:27 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 19:29:37 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	process_data(t_fields *data, va_list *ap, size_t *outpt_len)
 {
 	if (data -> type == 'c')
 		*outpt_len += process_char(data, va_arg(*ap, int));
-	/*else if (data -> type == 's')
+	else if (data -> type == 's')
 		*outpt_len += process_str(data, va_arg(*ap, char *));
-	else if (data -> type == 'p')
+	/*else if (data -> type == 'p')
 		*outpt_len += process_vptr(data, va_arg(*ap, unsigned long));
 	else if (data -> type == 'd' || data -> type == 'i')
 		*outpt_len += process_sint(data, va_arg(*ap, signed int));
@@ -51,8 +51,15 @@ size_t	process_char(t_fields *data, char c)
 			ft_putnchar(' ', (data -> width) - 1);
 		ft_putchar(c);
 	}
-	return (data -> width - 1);
+	return (data -> width);
 
+}
+
+/* -------------------------------------------------------------------------- */
+
+size_t	process_str(t_fields *data, char *str)
+{
+	
 }
 
 /* -------------------------------------------------------------------------- */

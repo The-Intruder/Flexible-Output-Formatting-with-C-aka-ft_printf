@@ -12,7 +12,6 @@
 
 NC := \033[31;0m
 RED := \033[0;31;1m
-PUR := \033[0;35;1m
 YEL := \033[0;33;1m
 GRA := \033[0;37;1m
 CYN := \033[0;36;1m
@@ -34,20 +33,23 @@ NAME := libftprintf.a
 
 all: $(NAME)
 
+bonus : fclean all
+
 $(NAME): $(OBJS) ft_printf.h
 	@echo "\n$(BLU)Creating $(GRA)$(NAME) $(BLU)archive file ...$(NC)\n"
 	@ar rcs $(NAME) $(OBJS)
 	@echo "\n$(GRN)Library created successfully ...\n$(NC)"
 
 %.o: %.c
-	@echo "$(PUR)Creating Object file from $(GRA)$< $(PUR)file ...\n$(NC)"
+	@echo "$(MGN)Creating Object file from $(GRA)$< $(MGN)file ...\n$(NC)"
 	@$(CC) $(CC_FLAGS) -o $@ -c $<
 
 compile: re main.c
 	@echo "\n$(YEL)Compiling the $(GRA)main.c $(YEL)...\n\n$(NC)"
 	@$(CC) $(CC_FLAGS) main.c -L. -lftprintf
 
-execute: a.out
+execute: compile a.out
+	@echo "$(CYN) => Output:\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(NC)"
 	@./a.out
 
 clean:
