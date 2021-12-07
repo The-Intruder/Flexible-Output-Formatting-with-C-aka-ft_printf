@@ -31,7 +31,7 @@ OBJS := $(SRCS:%.c=%.o)
 NAME := libftprintf.a
 
 
-all: fclean $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS) ft_printf.h
 	@echo "\n$(BLU)Creating $(GRA)$(NAME) $(BLU)archive file ...$(NC)\n"

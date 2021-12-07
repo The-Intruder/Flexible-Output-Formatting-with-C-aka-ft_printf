@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:12:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 00:31:03 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 11:42:03 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_fields
 } t_fields;
 
 /* ------------------------------ PROTOTYPES -------------------------------- */
-int		ft_printf(const char *str_in);
+int		ft_printf(const char *str_in, ...);
 int		ft_isflag(char c);
 int		ft_istrue_digit(char c);
 int		ft_isdigit(char c);
