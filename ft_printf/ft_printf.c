@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:18:44 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 14:06:31 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 16:08:23 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@ int ft_printf(const char *str_in, ...)
 	t_fields	*data;
 	size_t		i;
 	size_t		outpt_len;
-	char		*pocessed_str;
 	va_list		ap;
 
 	va_start(ap, str_in);
 	i = 0;
 	outpt_len = 0;
-	long long	arg;
-	long long	arg;
 	while (str_in[i])
 	{
 		if (str_in[i] == '%' && str_in[i + 1] == '%')
@@ -36,9 +33,9 @@ int ft_printf(const char *str_in, ...)
 		else if (str_in[i] == '%' && str_in[i + 1] != '%')
 		{
 			data = get_data((char *)&str_in[++i], &outpt_len, &i);
-			process_char(data, va_arg(ap, char), &outpt_len);
+			process_data(data, &ap, &outpt_len);
 
-			ft_putchar('\n');
+			//ft_putchar('\n');
 			/*
 			printf("minus:\t%d\n", data -> flags -> minus);
 			printf("plus:\t%d\n", data -> flags -> plus);

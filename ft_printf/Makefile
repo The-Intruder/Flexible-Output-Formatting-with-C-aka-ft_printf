@@ -24,7 +24,8 @@ CC := gcc
 CC_FLAGS := -Wall -Wextra -Werror
 
 SRCS := ft_printf_utils_getdata.c ft_printf_utils_isdata.c \
-	ft_printf_utils_misc.c ft_printf.c
+	ft_printf_utils_misc.c ft_printf_utils_processdata.c \
+	ft_printf.c
 
 OBJS := $(SRCS:%.c=%.o)
 

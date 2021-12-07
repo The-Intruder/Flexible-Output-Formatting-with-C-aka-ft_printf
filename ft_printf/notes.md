@@ -17,9 +17,14 @@ the `#` flag doesn't work with the `%d` type
 
 ### `%c` type
 
+- `-` flag **does** work with the `%c` type
+- the **width** flag **does** work with the `%c`
+
 - `+` flag **doesn't** work with `%c` type
 - `0` flag **doesn't** work with `%c` type
-- `-` flag **does** work with the `%c` type
 - `space` flag **doesn't** work with the `%c` type
-- `.` flag **doesn't** work with the '%c' type
-- `#` flag doesn't work with the `%c` type
+- `.` flag **doesn't** work with the `%c` type
+- `#` flag **doesn't** work with the `%c` type
+
+
+Don't forget to make a function that counts the number of chars in an `int` passed as argument.

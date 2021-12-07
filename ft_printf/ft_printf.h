@@ -6,7 +6,7 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:12:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 11:42:03 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 16:20:17 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putchar(char c);
+void	ft_putnchar(char c, size_t n);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr(int n);
 int		ft_isspace(char c);
@@ -67,6 +68,8 @@ t_flags		*get_flags(char **field_ptr);
 size_t		get_width(char **field_ptr);
 t_fields	*get_data(char *field_ptr, size_t *outpt_len, size_t *index);
 
+void		process_data(t_fields *data, va_list *ap, size_t *outpt_len);
+size_t		process_char(t_fields *data, char c);
 /* ---------------------------------- END ----------------------------------- */
 
 #endif
