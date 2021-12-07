@@ -15,6 +15,7 @@
 int	main(void)
 {
 	//ft_printf("srjtjrtjewtj %+-0# 20.15d kuasigalkghiug");
+	/*
 	ft_printf("%c", '0');
 	ft_printf(" %c ", '0');
 	ft_printf(" %c", '0' - 256);
@@ -24,5 +25,25 @@ int	main(void)
 	ft_printf(" %c %c %c ", '1', '2', '3');
 	ft_printf(" %c %c %c ", '2', '1', 0);
 	ft_printf(" %c %c %c ", 0, '1', '2');
+	*/
+	printf("%c", '0');
+	putchar('\n');
+	printf(" %c ", '0');
+	putchar('\n');
+	printf(" %c", '0' - 256);
+	putchar('\n');
+	printf("%c ", '0' + 256);
+	putchar('\n');
+	printf(" %c %c %c ", '0', 0, '1');
+	putchar('\n');
+	printf(" %c %c %c ", ' ', ' ', ' ');
+	putchar('\n');
+	printf(" %c %c %c ", '1', '2', '3');
+	putchar('\n');
+	printf(" %c %c %c ", '2', '1', 0);
+	putchar('\n');
+	printf(" %c %c %c ", 0, '1', '2');
+	putchar('\n');
+
 	return (0);
 }

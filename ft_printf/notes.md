@@ -1,4 +1,4 @@
-## `%d` type
+### `%d` type
 
 `-` flag overrides the `0` flag
 
@@ -15,4 +15,11 @@ truncation
 
 the `#` flag doesn't work with the `%d` type
 
+### `%c` type
 
+- `+` flag **doesn't** work with `%c` type
+- `0` flag **doesn't** work with `%c` type
+- `-` flag **does** work with the `%c` type
+- `space` flag **doesn't** work with the `%c` type
+- `.` flag **doesn't** work with the '%c' type
+- `#` flag doesn't work with the `%c` type

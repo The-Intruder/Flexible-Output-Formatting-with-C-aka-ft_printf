@@ -6,11 +6,13 @@
 /*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:18:44 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 11:51:15 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/07 14:06:31 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/* -------------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------------- */
 
@@ -19,23 +21,25 @@ int ft_printf(const char *str_in, ...)
 	t_fields	*data;
 	size_t		i;
 	size_t		outpt_len;
-	//char		*pocessed_str;
+	char		*pocessed_str;
 	va_list		ap;
-	long long	arg;
 
 	va_start(ap, str_in);
 	i = 0;
 	outpt_len = 0;
+	long long	arg;
+	long long	arg;
 	while (str_in[i])
 	{
 		if (str_in[i] == '%' && str_in[i + 1] == '%')
 			ft_putchar(str_in[++i]);
 		else if (str_in[i] == '%' && str_in[i + 1] != '%')
 		{
-			arg = va_arg(ap, long long);
 			data = get_data((char *)&str_in[++i], &outpt_len, &i);
-			//processed_str = ;
+			process_char(data, va_arg(ap, char), &outpt_len);
+
 			ft_putchar('\n');
+			/*
 			printf("minus:\t%d\n", data -> flags -> minus);
 			printf("plus:\t%d\n", data -> flags -> plus);
 			printf("space:\t%d\n", data -> flags -> space);
@@ -44,6 +48,7 @@ int ft_printf(const char *str_in, ...)
 			printf("type:\t%c\n", data -> type);
 			printf("width:\t%zu\n", data -> width);
 			printf("prcsn:\t%zu\n", data -> precision);
+			*/
 		}
 		else
 			ft_putchar(str_in[i]);
