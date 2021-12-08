@@ -33,7 +33,7 @@ int	ft_isflag(char c)
 int	ft_istype(char c)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' \
-        || c == 'p' || c == 'x' || c == 'X')
+        || c == 'p' || c == 'x' || c == 'X' || c == 'u')
         return (c);
     return (0);
 }

@@ -70,7 +70,11 @@ void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
 void	ft_puthex(unsigned int n, size_t *outpt_len, int the_case);
 void	ft_puthexa_prefix(unsigned int n, int isflag, char c, size_t *outpt_len);
 void	get_hex_size(unsigned int n, size_t *hex_size);
-void	get_nbr_size(int n, size_t *nbr_size);
+void	get_nbr_size(long n, size_t *nbr_size);
+void	ft_putnbr_presign(int n, t_flags *flags, size_t *outpt_len);
+void	get_unbr_size(unsigned int n, size_t *nbr_size);
+void	ft_putunbr(unsigned int n, size_t *outpt_len);
+void	ft_putunbr_presign(unsigned int n, t_flags *flags, size_t *outpt_len);
 
 /* ----------------------- */
 /* ft_printf sub-functions */
@@ -84,6 +88,9 @@ void	process_char(t_fields *data, char c, size_t *outpt_len);
 void	process_str(t_fields *data, char *str, size_t *outpt_len);
 void	process_vptr(t_fields *data, unsigned long vptr, size_t *outpt_len);
 void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len);
+void	process_int(t_fields *data, signed int n, size_t *outpt_len);
+void	process_uint(t_fields *data, unsigned int n, size_t *outpt_len);
+
 /* ---------------------------------- END ----------------------------------- */
 
 #endif

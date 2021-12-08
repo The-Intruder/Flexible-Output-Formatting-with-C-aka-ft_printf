@@ -25,9 +25,9 @@ void	process_data(t_fields *data, va_list *ap, size_t *outpt_len)
 	else if (data -> type == 'x' || data -> type == 'X')
 		process_hex(data, va_arg(*ap, unsigned int), outpt_len);
 	else if (data -> type == 'd' || data -> type == 'i')
-		process_sint(data, va_arg(*ap, signed int), outpt_len);
-	/*else if (data -> type == 'u')
-		*outpt_len += process_uint(data, va_arg(*ap, unsigned int));*/
+		process_int(data, va_arg(*ap, signed int), outpt_len);
+	else if (data -> type == 'u')
+		process_uint(data, va_arg(*ap, unsigned int), outpt_len);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -144,25 +144,85 @@ void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
 
 /* -------------------------------------------------------------------------- */
 
-void	process_int(t_fields *data, signed int n, size_t *outpt_len)
+void	process_int(t_fields *data, int n, size_t *outpt_len)
 {
 	size_t	nbr_size;
 	char	char_to_fill;
-	char	sign_prefix;
 
 	nbr_size = 0;
 	get_nbr_size(n, &nbr_size);
-	sign_prefix = '\0';
-	if (data -> flags -> plus)
-		sign_prefix = '+';
-	else if (data -> flags -> space)
-		sign_prefix = ' ';
-	
 	char_to_fill = ' ';
-	if (!(data -> is_precision) && data -> flags -> zero && !(data -> flags -> minus))
-		char_to_fill = '0';
-	if (data -> is_precision && data -> precision > nbr_size)
+	if ((data -> is_precision) && (data -> precision) >= nbr_size)
 		data -> precision -= nbr_size;
 	else
 		data -> precision = 0;
+	if (!(data -> is_precision) && data -> flags -> zero && !(data -> flags -> minus))
+		char_to_fill = '0';
+	if (data -> flags -> plus || data -> flags -> space || n < 0)
+		nbr_size += 1;
+	if (data -> width >= nbr_size + data -> precision)
+		data -> width -= nbr_size + data -> precision;
+	else
+		data -> width = 0;
+	
+	if (data -> flags -> minus)
+	{
+		ft_putnbr_presign(n, data -> flags, outpt_len);
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_putnbr(n, outpt_len);
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+	}
+	else
+	{
+		if (char_to_fill == ' ')
+		{
+			ft_putnchar(char_to_fill, data -> width, outpt_len);
+			data -> width = 0;
+		}
+		ft_putnbr_presign(n, data -> flags, outpt_len);
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_putnbr(n, outpt_len);
+	}
 }
+
+/* -------------------------------------------------------------------------- */
+
+void	process_uint(t_fields *data, unsigned int n, size_t *outpt_len)
+{
+	size_t	nbr_size;
+	char	char_to_fill;
+	nbr_size = 0;
+	get_unbr_size(n, &nbr_size);
+	char_to_fill = ' ';
+	if ((data -> is_precision) && (data -> precision) >= nbr_size)
+		data -> precision -= nbr_size;
+	else
+		data -> precision = 0;
+	if (!(data -> is_precision) && !(data -> flags -> minus) && data -> flags -> zero)
+		char_to_fill = '0';
+	if (data -> width >= nbr_size + data -> precision)
+		data -> width -= nbr_size + data -> precision;
+	else
+		data -> width = 0;
+	
+	if (data -> flags -> minus)
+	{
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_putunbr(n, outpt_len);
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+	}
+	else
+	{
+		if (char_to_fill == ' ')
+		{
+			ft_putnchar(char_to_fill, data -> width, outpt_len);
+			data -> width = 0;
+		}
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_putunbr(n, outpt_len);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
