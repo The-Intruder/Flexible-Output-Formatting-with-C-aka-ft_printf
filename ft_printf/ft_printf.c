@@ -29,9 +29,9 @@ int ft_printf(const char *str_in, ...)
 	outpt_len = 0;
 	while (str_in[i])
 	{
-		if (str_in[i] == '%' && str_in[i + 1] == '%')
+		if (str_in[i] == '%' && (str_in[i + 1] == '%' || !ft_isvalid(str_in[i + 1])))
 			ft_putchar(str_in[++i], &outpt_len);
-		else if (str_in[i] == '%' && str_in[i + 1] != '%')
+		else if (str_in[i] == '%' && ft_isvalid(str_in[i + 1]))
 		{
 			ft_bzero(&data, sizeof(t_fields));
 			ft_bzero(&flags, sizeof(t_flags));

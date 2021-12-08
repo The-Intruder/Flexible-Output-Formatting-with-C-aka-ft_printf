@@ -64,6 +64,7 @@ void	ft_putnbr(int n, size_t *outpt_len);
 void	ft_puthex_adrs(unsigned long n, size_t *outpt_len);
 int		ft_isspace(char c);
 int		ft_atoi(const char *str);
+int		ft_isvalid(char c);
 
 void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
 void	get_hex_adrs_size(unsigned long n, size_t *hex_size);

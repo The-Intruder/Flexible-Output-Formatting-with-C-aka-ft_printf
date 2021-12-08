@@ -14,153 +14,157 @@
 int	main(void)
 {
 	int a;
-	a = printf("\" %u \"\n", 0);
+	a = ft_printf("this is %mg\n");
 	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 0);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -1);
+	a = printf("this is %mg\n");
 	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -1);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 1);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 1);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 9);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 9);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 10);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 10);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 11);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 11);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 15);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 15);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 16);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 16);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 17);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 17);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 99);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 99);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 100);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 100);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 101);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 101);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -9);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -9);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -10);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -10);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -11);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -11);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -14);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -14);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -15);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -15);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -16);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -16);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -99);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -99);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -100);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -100);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", -101);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", -101);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", INT_MAX);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", INT_MAX);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", INT_MIN);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", INT_MIN);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", LONG_MAX);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", LONG_MAX);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", LONG_MIN);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", LONG_MIN);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", UINT_MAX);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", UINT_MAX);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", ULONG_MAX);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", ULONG_MAX);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u \"\n", 9223372036854775807LL);
-	printf("%d\n", a);
-	a = ft_printf("\" %u \"\n", 9223372036854775807LL);
-	printf("%d\n\n", a);
-
-	a = printf("\" %u %u %u %u %u %u %u\"\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("%d\n", a);
-	a = ft_printf("\" %u %u %u %u %u %u %u\"\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("%d\n\n", a);
 
 	return (0);
 }
+	// a = printf("\" %u \"\n", 0);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 0);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -1);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -1);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 1);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 1);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 9);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 9);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 10);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 10);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 11);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 11);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 15);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 15);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 16);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 16);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 17);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 17);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 99);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 99);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 100);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 100);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 101);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 101);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -9);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -9);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -10);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -10);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -11);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -11);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -14);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -14);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -15);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -15);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -16);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -16);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -99);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -99);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -100);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -100);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", -101);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", -101);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", INT_MAX);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", INT_MAX);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", INT_MIN);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", INT_MIN);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", LONG_MAX);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", LONG_MAX);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", LONG_MIN);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", LONG_MIN);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", UINT_MAX);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", UINT_MAX);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", ULONG_MAX);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", ULONG_MAX);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u \"\n", 9223372036854775807LL);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u \"\n", 9223372036854775807LL);
+	// printf("%d\n\n", a);
+
+	// a = printf("\" %u %u %u %u %u %u %u\"\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	// printf("%d\n", a);
+	// a = ft_printf("\" %u %u %u %u %u %u %u\"\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	// printf("%d\n\n", a);
 
 // 	a = printf("\" %.1d \"\n", 0);
 // 	printf("%d\n", a);
