@@ -24,9 +24,9 @@ void	process_data(t_fields *data, va_list *ap, size_t *outpt_len)
 		process_vptr(data, va_arg(*ap, unsigned long), outpt_len);
 	else if (data -> type == 'x' || data -> type == 'X')
 		process_hex(data, va_arg(*ap, unsigned int), outpt_len);
-	/*else if (data -> type == 'd' || data -> type == 'i')
-		*outpt_len += process_sint(data, va_arg(*ap, signed int));
-	else if (data -> type == 'u')
+	else if (data -> type == 'd' || data -> type == 'i')
+		process_sint(data, va_arg(*ap, signed int), outpt_len);
+	/*else if (data -> type == 'u')
 		*outpt_len += process_uint(data, va_arg(*ap, unsigned int));*/
 }
 
@@ -110,7 +110,7 @@ void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
 	hex_size = 0;
 	get_hex_size(n, &hex_size);
 	char_to_fill = ' ';
-	if (data -> is_precision == 0 && data -> flags -> zero)
+	if (!(data -> is_precision) && (data -> flags -> zero))
 		char_to_fill = '0';
 	the_case = 87;
 	if (data -> type == 'X')
@@ -119,7 +119,7 @@ void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
 	if (data -> is_precision && data -> precision > hex_size)
 		data -> precision -= hex_size;
 	else
-		 data -> precision = 0;
+		data -> precision = 0;
 
 	if (data -> width >= hex_size + data -> precision)
 		data -> width -= hex_size + data -> precision;
@@ -144,3 +144,25 @@ void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
 
 /* -------------------------------------------------------------------------- */
 
+void	process_int(t_fields *data, signed int n, size_t *outpt_len)
+{
+	size_t	nbr_size;
+	char	char_to_fill;
+	char	sign_prefix;
+
+	nbr_size = 0;
+	get_nbr_size(n, &nbr_size);
+	sign_prefix = '\0';
+	if (data -> flags -> plus)
+		sign_prefix = '+';
+	else if (data -> flags -> space)
+		sign_prefix = ' ';
+	
+	char_to_fill = ' ';
+	if (!(data -> is_precision) && data -> flags -> zero && !(data -> flags -> minus))
+		char_to_fill = '0';
+	if (data -> is_precision && data -> precision > nbr_size)
+		data -> precision -= nbr_size;
+	else
+		data -> precision = 0;
+}

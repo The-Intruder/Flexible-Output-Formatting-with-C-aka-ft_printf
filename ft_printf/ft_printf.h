@@ -70,6 +70,7 @@ void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
 void	ft_puthex(unsigned int n, size_t *outpt_len, int the_case);
 void	ft_puthexa_prefix(unsigned int n, int isflag, char c, size_t *outpt_len);
 void	get_hex_size(unsigned int n, size_t *hex_size);
+void	get_nbr_size(int n, size_t *nbr_size);
 
 /* ----------------------- */
 /* ft_printf sub-functions */

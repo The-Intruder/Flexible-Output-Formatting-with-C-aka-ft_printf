@@ -257,3 +257,14 @@ void	ft_puthexa_prefix(unsigned int n, int isflag, char c, size_t *outpt_len)
 }
 
 /* -------------------------------------------------------------------------- */
+
+void	get_nbr_size(int n, size_t *nbr_size)
+{
+	if (n <= 9)
+		(*nbr_size) += 1;
+	else if (n > 9)
+	{
+		get_nbr_size(n / 10, nbr_size);
+		get_nbr_size(n % 10, nbr_size);
+	}
+}
