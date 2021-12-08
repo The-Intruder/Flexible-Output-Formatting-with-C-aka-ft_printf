@@ -105,31 +105,42 @@ void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
 {
 	size_t	hex_size;
 	char	char_to_fill;
+	int		the_case;
 
 	hex_size = 0;
 	get_hex_size(n, &hex_size);
-	if (data -> is_precision && data -> precision < hex_size )
-		hex_size = data -> precision;
-	else if (data -> flags -> zero)
+	char_to_fill = ' ';
+	if (data -> is_precision == 0 && data -> flags -> zero)
 		char_to_fill = '0';
+	the_case = 87;
+	if (data -> type == 'X')
+		the_case = 55;
+
+	if (data -> is_precision && data -> precision > hex_size)
+		data -> precision -= hex_size;
 	else
-		char_to_fill = ' ';
-	if (data -> width >= hex_size)
-		data -> width -= hex_size;
+		 data -> precision = 0;
+
+	if (data -> width >= hex_size + data -> precision)
+		data -> width -= hex_size + data -> precision;
 	else
 		data -> width = 0;
+
 	if (data -> flags -> minus)
 	{
-		ft_putstr_len("0x", 2, outpt_len);
-		ft_puthex_adrs(n, outpt_len);
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_puthexa_prefix(n, data -> flags -> hash, data -> type, outpt_len);
+		ft_puthex(n, outpt_len, the_case);
 		ft_putnchar(char_to_fill, data -> width, outpt_len);
 	}
 	else
 	{
 		ft_putnchar(char_to_fill, data -> width, outpt_len);
-		ft_putstr_len("0x", 2, outpt_len);
-		ft_puthex_adrs(n, outpt_len);
+		ft_putnchar('0', data -> precision, outpt_len);
+		ft_puthexa_prefix(n, data -> flags -> hash, data -> type, outpt_len);
+		ft_puthex(n, outpt_len, the_case);
 	}
 }
 
 /* -------------------------------------------------------------------------- */
+

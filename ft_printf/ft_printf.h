@@ -66,6 +66,9 @@ int		ft_isspace(char c);
 int		ft_atoi(const char *str);
 
 void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
+void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
+void	ft_puthex(unsigned int n, size_t *outpt_len, int the_case);
+void	ft_puthexa_prefix(unsigned int n, int isflag, char c, size_t *outpt_len);
 void	get_hex_size(unsigned int n, size_t *hex_size);
 
 /* ----------------------- */
@@ -79,6 +82,7 @@ void	process_data(t_fields *data, va_list *ap, size_t *outpt_len);
 void	process_char(t_fields *data, char c, size_t *outpt_len);
 void	process_str(t_fields *data, char *str, size_t *outpt_len);
 void	process_vptr(t_fields *data, unsigned long vptr, size_t *outpt_len);
+void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len);
 /* ---------------------------------- END ----------------------------------- */
 
 #endif

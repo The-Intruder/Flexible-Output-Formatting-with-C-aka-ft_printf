@@ -217,16 +217,16 @@ void	get_hex_adrs_size(unsigned long n, size_t *hex_size)
 
 /* -------------------------------------------------------------------------- */
 
-void	ft_puthex(unsigned int n, size_t *outpt_len)
+void	ft_puthex(unsigned int n, size_t *outpt_len, int the_case)
 {
 	if (n < 10)
 		ft_putchar(n + 48, outpt_len);
 	else if (n >= 10 && n <= 15)
-	 	ft_putchar(n + 87, outpt_len);
+	 	ft_putchar(n + the_case, outpt_len);
 	else if (n > 15)
 	{
-		ft_puthex_adrs(n / 16, outpt_len);
-		ft_puthex_adrs(n % 16, outpt_len);
+		ft_puthex(n / 16, outpt_len, the_case);
+		ft_puthex(n % 16, outpt_len, the_case);
 	}
 }
 
@@ -238,8 +238,21 @@ void	get_hex_size(unsigned int n, size_t *hex_size)
 		(*hex_size) += 1;
 	else if (n > 15)
 	{
-		get_hex_adrs_size(n / 16, hex_size);
-		get_hex_adrs_size(n % 16, hex_size);
+		get_hex_size(n / 16, hex_size);
+		get_hex_size(n % 16, hex_size);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	ft_puthexa_prefix(unsigned int n, int isflag, char c, size_t *outpt_len)
+{
+	if (isflag && n)
+	{
+		if (c == 'x')
+			ft_putstr_len("0x", 2, outpt_len);
+		else if (c == 'X')
+			ft_putstr_len("0X", 2, outpt_len);
 	}
 }
 
