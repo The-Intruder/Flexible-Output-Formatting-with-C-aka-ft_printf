@@ -39,14 +39,15 @@ typedef struct s_fields
 {
 	t_flags	*flags;
 	size_t	width;
-	int		precision;
+	int		is_precision;
+	size_t	precision;
 	char	type;
 } t_fields;
 
 /* ------------------------------ PROTOTYPES -------------------------------- */
 int		ft_printf(const char *str_in, ...);
 int		ft_isflag(char c);
-int		ft_istrue_digit(char c);
+int		ft_isdot(char **c);
 int		ft_isdigit(char c);
 int		ft_istype(char c);
 
@@ -72,6 +73,7 @@ void	get_data(t_fields *data, t_flags *flags, char *field_ptr, \
 void	process_data(t_fields *data, va_list *ap, size_t *outpt_len);
 void	process_char(t_fields *data, char c, size_t *outpt_len);
 void	process_str(t_fields *data, char *str, size_t *outpt_len);
+void	process_vptr(t_fields *data, unsigned long vptr, size_t *outpt_len);
 /* ---------------------------------- END ----------------------------------- */
 
 #endif

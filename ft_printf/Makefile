@@ -20,7 +20,7 @@ MGN := \033[0;35;1m
 BLU := \033[0;34;1m
 
 CC := gcc
-CC_FLAGS := -Wall -Wextra -Werror
+CC_FLAGS := 
 
 SRCS := ft_printf_utils_getdata.c ft_printf_utils_isdata.c \
 	ft_printf_utils_misc.c ft_printf_utils_processdata.c \

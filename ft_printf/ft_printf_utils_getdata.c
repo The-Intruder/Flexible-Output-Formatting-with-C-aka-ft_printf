@@ -51,16 +51,13 @@ size_t get_width(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-int get_precision(char **field_ptr)
+size_t get_precision(char **field_ptr)
 {
-	int	the_precision;
+	size_t	the_precision;
 
-	the_precision = -1;
-	if (**field_ptr == '.' && ft_isdigit(*(*field_ptr + 1)))
-	{
-		*field_ptr += 1;
+	the_precision = 0;
+	if (**field_ptr && ft_isdigit(*(*field_ptr)))
 		the_precision = ft_atoi(*field_ptr);
-	}
 	while (ft_isdigit(**field_ptr))
 		*field_ptr += 1;
 	return (the_precision);
@@ -85,7 +82,9 @@ void	get_data(t_fields *data, t_flags *flags, char *field_ptr, size_t *index)
 	data -> flags = flags;
 	get_flags(&field_ptr, flags);
 	data -> width = get_width(&field_ptr);
-	data -> precision = get_precision(&field_ptr);
+	data -> is_precision = ft_isdot(&field_ptr);
+	if (data -> is_precision)
+		data -> precision = get_precision(&field_ptr);
 	data -> type = get_type(&field_ptr);
 	*index += field_ptr - initial_ptr;
 }

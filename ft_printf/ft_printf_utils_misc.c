@@ -91,53 +91,69 @@ void	ft_putchar(char c, size_t *outpt_len)
 
 void	ft_putnchar(char c, size_t n, size_t *outpt_len)
 {
-	while (n-- != 0)
+	if (!c)
+	{
+		write(1, "(null)", 6);
+		*outpt_len += 6;
+	}
+	else
+	{
+		*outpt_len += n;
+		while (n-- != 0)
 		write(1, &c, 1);
-	*outpt_len += n;
+	}
 }
 
 /* -------------------------------------------------------------------------- */
 
 void	ft_putstr(char *s, size_t *outpt_len)
 {
-	if (!s)
-		return ;
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		*outpt_len += 6;
+	}
 	else
+	{
 		write(1, s, ft_strlen(s));
-	*outpt_len += ft_strlen(s);
+		*outpt_len += ft_strlen(s);
+	}
 }
 
 /* -------------------------------------------------------------------------- */
 
 void	ft_putstr_len(char *s, size_t len, size_t *outpt_len)
 {
-	if (!s || !len)
-		return ;
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		len = 6;
+	}
 	else
 		write(1, s, len);
 	*outpt_len += len;
 }
 
 /* -------------------------------------------------------------------------- */
-/*
-void	ft_putnbr(int n)
+
+void	ft_putnbr(int n, size_t *outpt_len)
 {
 	if (n >= 0 && n < 10)
-		ft_putchar(n + 48);
+		ft_putchar(n + 48, outpt_len);
 	else if (n == -2147483648)
-		ft_putstr("-2147483648");
+		ft_putstr("-2147483648", outpt_len);
 	else if (n < 0 && n > -2147483648)
 	{
-		ft_putchar('-');
-		ft_putnbr(n * (-1));
+		ft_putchar('-', outpt_len);
+		ft_putnbr(n * (-1), outpt_len);
 	}
 	else if (n >= 10)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putnbr(n / 10, outpt_len);
+		ft_putnbr(n % 10, outpt_len);
 	}
 }
-*/
+
 /* -------------------------------------------------------------------------- */
 
 int	ft_isspace(char c)
@@ -169,6 +185,26 @@ int	ft_atoi(const char *str)
 	while (ft_isdigit(str[i]))
 		sum = (sum * 10) + (str[i++] - '0');
 	return (sum * sign);
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	ft_puthex_add(unsigned long n, size_t *outpt_len)
+{
+	if (n >= 0 && n < 15)
+		ft_putchar(n + 48, outpt_len);
+	else if (n == -2147483648)
+		ft_putstr("-2147483648", outpt_len);
+	else if (n < 0 && n > -2147483648)
+	{
+		ft_putchar('-', outpt_len);
+		ft_putnbr(n * (-1), outpt_len);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr(n / 10, outpt_len);
+		ft_putnbr(n % 10, outpt_len);
+	}
 }
 
 /* -------------------------------------------------------------------------- */
