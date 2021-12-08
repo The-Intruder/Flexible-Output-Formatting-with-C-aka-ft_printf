@@ -20,7 +20,7 @@ MGN := \033[0;35;1m
 BLU := \033[0;34;1m
 
 CC := gcc
-CC_FLAGS := 
+CC_FLAGS := -Wall -Wextra -Werror
 
 SRCS := ft_printf_utils_getdata.c ft_printf_utils_isdata.c \
 	ft_printf_utils_misc.c ft_printf_utils_processdata.c \
@@ -46,7 +46,7 @@ $(NAME): $(OBJS) ft_printf.h
 
 compile: re main.c
 	@echo "\n$(YEL)Compiling the $(GRA)main.c $(YEL)...\n\n$(NC)"
-	@$(CC) $(CC_FLAGS) main.c -L. -lftprintf
+	@$(CC) main.c -L. -lftprintf
 
 execute: compile a.out
 	@echo "$(CYN) => Output:\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(NC)"

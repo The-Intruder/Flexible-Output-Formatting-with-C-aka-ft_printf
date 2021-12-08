@@ -22,12 +22,12 @@ void	process_data(t_fields *data, va_list *ap, size_t *outpt_len)
 		process_str(data, va_arg(*ap, char *), outpt_len);
 	else if (data -> type == 'p')
 		process_vptr(data, va_arg(*ap, unsigned long), outpt_len);
+	else if (data -> type == 'x' || data -> type == 'X')
+		process_hex(data, va_arg(*ap, unsigned int), outpt_len);
 	/*else if (data -> type == 'd' || data -> type == 'i')
 		*outpt_len += process_sint(data, va_arg(*ap, signed int));
 	else if (data -> type == 'u')
-		*outpt_len += process_uint(data, va_arg(*ap, unsigned int));
-	else if (data -> type == 'x' || data -> type == 'X')
-		*outpt_len += process_hex(data, va_arg(*ap, unsigned int));*/
+		*outpt_len += process_uint(data, va_arg(*ap, unsigned int));*/
 }
 
 /* -------------------------------------------------------------------------- */
@@ -77,7 +77,59 @@ void	process_str(t_fields *data, char *str, size_t *outpt_len)
 
 void	process_vptr(t_fields *data, unsigned long vptr, size_t *outpt_len)
 {
-	
+	size_t	adrs_size;
+
+	adrs_size = 2;
+	get_hex_adrs_size(vptr, &adrs_size);
+	if (data -> width >= adrs_size)
+		data -> width -= adrs_size;
+	else
+		data -> width = 0;
+	if (data -> flags -> minus)
+	{
+		ft_putstr_len("0x", 2, outpt_len);
+		ft_puthex_adrs(vptr, outpt_len);
+		ft_putnchar(' ', data -> width, outpt_len);
+	}
+	else
+	{
+		ft_putnchar(' ', data -> width, outpt_len);
+		ft_putstr_len("0x", 2, outpt_len);
+		ft_puthex_adrs(vptr, outpt_len);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	process_hex(t_fields *data, unsigned int n, size_t *outpt_len)
+{
+	size_t	hex_size;
+	char	char_to_fill;
+
+	hex_size = 0;
+	get_hex_size(n, &hex_size);
+	if (data -> is_precision && data -> precision < hex_size )
+		hex_size = data -> precision;
+	else if (data -> flags -> zero)
+		char_to_fill = '0';
+	else
+		char_to_fill = ' ';
+	if (data -> width >= hex_size)
+		data -> width -= hex_size;
+	else
+		data -> width = 0;
+	if (data -> flags -> minus)
+	{
+		ft_putstr_len("0x", 2, outpt_len);
+		ft_puthex_adrs(n, outpt_len);
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+	}
+	else
+	{
+		ft_putnchar(char_to_fill, data -> width, outpt_len);
+		ft_putstr_len("0x", 2, outpt_len);
+		ft_puthex_adrs(n, outpt_len);
+	}
 }
 
 /* -------------------------------------------------------------------------- */

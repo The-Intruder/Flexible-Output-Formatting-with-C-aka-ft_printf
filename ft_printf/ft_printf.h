@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <string.h>
+# include <limits.h>
 
 /* -------------------------------- MACROS ---------------------------------- */
 # define TRUE 1;
@@ -59,9 +60,13 @@ void	ft_putchar(char c, size_t *outpt_len);
 void	ft_putnchar(char c, size_t n, size_t *outpt_len);
 void	ft_putstr(char *s, size_t *outpt_len);
 void	ft_putstr_len(char *s, size_t len, size_t *outpt_len);
-void	ft_putnbr(int n);
+void	ft_putnbr(int n, size_t *outpt_len);
+void	ft_puthex_adrs(unsigned long n, size_t *outpt_len);
 int		ft_isspace(char c);
 int		ft_atoi(const char *str);
+
+void	get_hex_adrs_size(unsigned long n, size_t *hex_size);
+void	get_hex_size(unsigned int n, size_t *hex_size);
 
 /* ----------------------- */
 /* ft_printf sub-functions */

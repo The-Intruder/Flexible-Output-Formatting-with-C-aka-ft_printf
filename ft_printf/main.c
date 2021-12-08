@@ -14,59 +14,94 @@
 int	main(void)
 {
 	int a;
-	a = printf("\"%1s\"\n", "");
+	a = printf("\" %p \"\n", -1);
 	printf("%d\n", a);
-	a = ft_printf("\"%1s\"\n", "");
+	a = ft_printf("\" %p \"\n", -1);
 	printf("%d\n\n", a);
-	
-	a = printf("\"%-1s\"\n", "");
+	a = printf("\" %p \"\n", 1);
 	printf("%d\n", a);
-	a = ft_printf("\"%-1s\"\n", "");
+	a = ft_printf("\" %p \"\n", 1);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-2s\"\n", "");
+	a = printf("\" %p \"\n", 15);
 	printf("%d\n", a);
-	a = ft_printf("\" %-2s\"\n", "");
+	a = ft_printf("\" %p \"\n", 15);
 	printf("%d\n\n", a);
-	
-	a = printf("\"%-3s \"\n", "");
+	a = printf("\" %p \"\n", 16);
 	printf("%d\n", a);
-	a = ft_printf("\"%-3s \"\n", "");
+	a = ft_printf("\" %p \"\n", 16);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-0s \"\n", "");
+	a = printf("\" %p \"\n", 17);
 	printf("%d\n", a);
-	a = ft_printf("\" %-0s \"\n", "");
+	a = ft_printf("\" %p \"\n", 17);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-s \"\n", "-");
+	a = printf("\" %p %p \"\n", LONG_MIN, LONG_MAX);
 	printf("%d\n", a);
-	a = ft_printf("\" %-s \"\n", "-");
+	a = ft_printf("\" %p %p \"\n", LONG_MIN, LONG_MAX);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-1s %-2s \"\n", "", "-");
+	a = printf("\" %p %p \"\n", INT_MIN, INT_MAX);
 	printf("%d\n", a);
-	a = ft_printf("\" %-1s %-2s \"\n", "", "-");
+	a = ft_printf("\" %p %p \"\n", INT_MIN, INT_MAX);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-3s %-4s \"\n", " - ", "");
+	a = printf("\" %p %p \"\n", ULONG_MAX, -ULONG_MAX);
 	printf("%d\n", a);
-	a = ft_printf("\" %-3s %-4s \"\n", " - ", "");
+	a = ft_printf("\" %p %p \"\n", ULONG_MAX, -ULONG_MAX);
 	printf("%d\n\n", a);
-	
-	a = printf("\" <%-2s> <%-3s> <%-4s> <%-5s> \"\n", " - ", "", "4", "");
+	a = printf("\" %p %p \"\n", 0, 0);
 	printf("%d\n", a);
-	a = ft_printf("\" <%-2s> <%-3s> <%-4s> <%-5s> \"\n", " - ", "", "4", "");
+	a = ft_printf("\" %p %p \"\n", 0, 0);
 	printf("%d\n\n", a);
-	
-	a = printf("\" %-3s %-3s %-4s %-5s %-3s \"\n", " - ", "", "4", "", "2 ");
-	printf("%d\n", a);
-	a = ft_printf("\" %-3s %-3s %-4s %-5s %-3s \"\n", " - ", "", "4", "", "2 ");
-	printf("%d\n\n", a);
-	
 	return (0);
 }
 
+	// a = printf("\"%1s\"\n", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\"%1s\"\n", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\"%-1s\"\n", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\"%-1s\"\n", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-2s\"\n", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-2s\"\n", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\"%-3s \"\n", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\"%-3s \"\n", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-0s \"\n", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-0s \"\n", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-s \"\n", "-");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-s \"\n", "-");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-1s %-2s \"\n", "", "-");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-1s %-2s \"\n", "", "-");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-3s %-4s \"\n", " - ", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-3s %-4s \"\n", " - ", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" <%-2s> <%-3s> <%-4s> <%-5s> \"\n", " - ", "", "4", "");
+	// printf("%d\n", a);
+	// a = ft_printf("\" <%-2s> <%-3s> <%-4s> <%-5s> \"\n", " - ", "", "4", "");
+	// printf("%d\n\n", a);
+	
+	// a = printf("\" %-3s %-3s %-4s %-5s %-3s \"\n", " - ", "", "4", "", "2 ");
+	// printf("%d\n", a);
+	// a = ft_printf("\" %-3s %-3s %-4s %-5s %-3s \"\n", " - ", "", "4", "", "2 ");
+	// printf("%d\n\n", a);
 
 	// char s2[] = "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.";
 	// a = printf("\"%s\"\n", "");

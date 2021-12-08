@@ -189,21 +189,57 @@ int	ft_atoi(const char *str)
 
 /* -------------------------------------------------------------------------- */
 
-void	ft_puthex_add(unsigned long n, size_t *outpt_len)
+void	ft_puthex_adrs(unsigned long n, size_t *outpt_len)
 {
-	if (n >= 0 && n < 15)
+	if (n < 10)
 		ft_putchar(n + 48, outpt_len);
-	else if (n == -2147483648)
-		ft_putstr("-2147483648", outpt_len);
-	else if (n < 0 && n > -2147483648)
+	else if (n >= 10 && n <= 15)
+	 	ft_putchar(n + 87, outpt_len);
+	else if (n > 15)
 	{
-		ft_putchar('-', outpt_len);
-		ft_putnbr(n * (-1), outpt_len);
+		ft_puthex_adrs(n / 16, outpt_len);
+		ft_puthex_adrs(n % 16, outpt_len);
 	}
-	else if (n >= 10)
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	get_hex_adrs_size(unsigned long n, size_t *hex_size)
+{
+	if (n <= 15)
+		(*hex_size) += 1;
+	else if (n > 15)
 	{
-		ft_putnbr(n / 10, outpt_len);
-		ft_putnbr(n % 10, outpt_len);
+		get_hex_adrs_size(n / 16, hex_size);
+		get_hex_adrs_size(n % 16, hex_size);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	ft_puthex(unsigned int n, size_t *outpt_len)
+{
+	if (n < 10)
+		ft_putchar(n + 48, outpt_len);
+	else if (n >= 10 && n <= 15)
+	 	ft_putchar(n + 87, outpt_len);
+	else if (n > 15)
+	{
+		ft_puthex_adrs(n / 16, outpt_len);
+		ft_puthex_adrs(n % 16, outpt_len);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	get_hex_size(unsigned int n, size_t *hex_size)
+{
+	if (n <= 15)
+		(*hex_size) += 1;
+	else if (n > 15)
+	{
+		get_hex_adrs_size(n / 16, hex_size);
+		get_hex_adrs_size(n % 16, hex_size);
 	}
 }
 
