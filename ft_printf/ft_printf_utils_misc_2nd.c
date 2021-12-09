@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_isdata.c                           :+:      :+:    :+:   */
+/*   ft_printf_utils_misc_2nd.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 19:15:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/10 00:12:13 by mnaimi           ###   ########.fr       */
+/*   Created: 2021/12/09 21:35:08 by mnaimi            #+#    #+#             */
+/*   Updated: 2021/12/09 23:35:30 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,71 @@
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_isdigit(char c)
+void	ft_putnchar(char c, size_t n, size_t *outpt_len)
 {
-	return (c >= '0' && c <= '9');
-}
-
-/* -------------------------------------------------------------------------- */
-
-int	ft_isflag(char c)
-{
-	if (c == '-' || c == '+' || c == ' ' || c == '0' || c == '#')
-		return (c);
-	return (0);
-}
-
-/* -------------------------------------------------------------------------- */
-
-int	ft_istype(char c)
-{
-	if (c == 'c' || c == 's' || c == 'd' || c == 'i' \
-		|| c == 'p' || c == 'x' || c == 'X' || c == 'u')
-		return (c);
-	return (0);
-}
-
-/* -------------------------------------------------------------------------- */
-
-int	ft_isdot(char **c)
-{
-	if (**c == '.')
+	if (!c)
 	{
-		(*c) += 1;
-		return (1);
+		write(1, "(null)", 6);
+		*outpt_len += 6;
 	}
-	return (0);
+	else
+	{
+		*outpt_len += n;
+		while (n-- != 0)
+			write(1, &c, 1);
+	}
 }
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_will_be_valid(char *s)
+void	ft_putstr(char *s, size_t *outpt_len)
 {
-	while (*s && (*s == '-' || *s == '.' || *s == '0' || *s == '+' \
-		|| *s == '#' || *s == ' ' || (*s >= '0' && *s <= '9')))
-		s++;
-	if (*s == 'c' || *s == 's' || *s == 'd' || *s == 'i' \
-		|| *s == 'p' || *s == 'x' || *s == 'X' || *s == 'u')
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		*outpt_len += 6;
+	}
+	else
+	{
+		write(1, s, ft_strlen(s));
+		*outpt_len += ft_strlen(s);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	ft_putstr_len(char *s, size_t len, size_t *outpt_len)
+{
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		len = 6;
+	}
+	else
+		write(1, s, len);
+	*outpt_len += len;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void	ft_puthex_adrs(unsigned long n, size_t *outpt_len)
+{
+	if (n < 10)
+		ft_putchar(n + 48, outpt_len);
+	else if (n >= 10 && n <= 15)
+		ft_putchar(n + 87, outpt_len);
+	else if (n > 15)
+	{
+		ft_puthex_adrs(n / 16, outpt_len);
+		ft_puthex_adrs(n % 16, outpt_len);
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+int	ft_ispresign(t_fields *data, int n)
+{
+	if (n < 0 || (n >= 0 && (data->flags->plus || data->flags->space)))
 		return (1);
 	return (0);
 }

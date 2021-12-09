@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils_getdata.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaimi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:14 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/07 23:00:03 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/09 22:21:41 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	get_flags(char **field_ptr, t_flags *flags)
 {
-	char flag;
+	char	flag;
 
 	while (**field_ptr && ft_isflag(**field_ptr))
 	{
@@ -37,7 +37,7 @@ void	get_flags(char **field_ptr, t_flags *flags)
 
 /* -------------------------------------------------------------------------- */
 
-size_t get_width(char **field_ptr)
+size_t	get_width(char **field_ptr)
 {
 	size_t	the_width;
 
@@ -51,7 +51,7 @@ size_t get_width(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-size_t get_precision(char **field_ptr)
+size_t	get_precision(char **field_ptr)
 {
 	size_t	the_precision;
 
@@ -65,7 +65,7 @@ size_t get_precision(char **field_ptr)
 
 /* -------------------------------------------------------------------------- */
 
-char    get_type(char **field_ptr)
+char	get_type(char **field_ptr)
 {
 	if (**field_ptr && ft_istype(**field_ptr))
 		return (ft_istype(**field_ptr));
@@ -78,6 +78,8 @@ void	get_data(t_fields *data, t_flags *flags, char *field_ptr, size_t *index)
 {
 	char		*initial_ptr;
 
+	ft_bzero(data, sizeof(t_fields));
+	ft_bzero(flags, sizeof(t_flags));
 	initial_ptr = field_ptr;
 	data -> flags = flags;
 	get_flags(&field_ptr, flags);

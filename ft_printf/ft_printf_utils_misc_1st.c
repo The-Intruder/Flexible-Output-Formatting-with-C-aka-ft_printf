@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_isdata.c                           :+:      :+:    :+:   */
+/*   ft_printf_utils_misc_1st.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 19:15:22 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/10 00:12:13 by mnaimi           ###   ########.fr       */
+/*   Created: 2021/12/04 20:07:32 by mnaimi            #+#    #+#             */
+/*   Updated: 2021/12/09 23:18:36 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,70 @@
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_isdigit(char c)
+size_t	ft_strlen(const char *s)
 {
-	return (c >= '0' && c <= '9');
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_isflag(char c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c == '-' || c == '+' || c == ' ' || c == '0' || c == '#')
-		return (c);
-	return (0);
+	size_t	i;
+	char	*myptr;
+
+	i = 0;
+	myptr = (char *)s;
+	while (i++ < n)
+		*(myptr++) = 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_istype(char c)
+int	ft_isspace(char c)
 {
-	if (c == 'c' || c == 's' || c == 'd' || c == 'i' \
-		|| c == 'p' || c == 'x' || c == 'X' || c == 'u')
-		return (c);
-	return (0);
+	return (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ');
 }
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_isdot(char **c)
+int	ft_atoi(const char *str)
 {
-	if (**c == '.')
+	size_t	i;
+	size_t	sum;
+	char	sign;
+
+	i = 0;
+	sum = 0;
+	sign = 1;
+	while (ft_isspace(str[i]))
+		++i;
+	if (str[i] == '-')
 	{
-		(*c) += 1;
-		return (1);
+		sign = -1;
+		++i;
 	}
-	return (0);
+	else if (str[i] == '+')
+		++i;
+	while (ft_isdigit(str[i]))
+		sum = (sum * 10) + (str[i++] - '0');
+	return (sum * sign);
 }
 
 /* -------------------------------------------------------------------------- */
 
-int	ft_will_be_valid(char *s)
+void	ft_putchar(char c, size_t *outpt_len)
 {
-	while (*s && (*s == '-' || *s == '.' || *s == '0' || *s == '+' \
-		|| *s == '#' || *s == ' ' || (*s >= '0' && *s <= '9')))
-		s++;
-	if (*s == 'c' || *s == 's' || *s == 'd' || *s == 'i' \
-		|| *s == 'p' || *s == 'x' || *s == 'X' || *s == 'u')
-		return (1);
-	return (0);
+	write(1, &c, 1);
+	*outpt_len += 1;
 }
 
 /* -------------------------------------------------------------------------- */
