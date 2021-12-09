@@ -83,8 +83,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 void	ft_putchar(char c, size_t *outpt_len)
 {
-	write(1, &c, 1);
-	*outpt_len += 1;
+	if (!c)
+	{
+		write(1, "(null)", 6);
+		*outpt_len += 6;
+	}
+	else
+	{
+		write(1, &c, 1);
+		*outpt_len += 1;
+	}
 }
 
 /* -------------------------------------------------------------------------- */
@@ -100,7 +108,7 @@ void	ft_putnchar(char c, size_t n, size_t *outpt_len)
 	{
 		*outpt_len += n;
 		while (n-- != 0)
-		write(1, &c, 1);
+			write(1, &c, 1);
 	}
 }
 

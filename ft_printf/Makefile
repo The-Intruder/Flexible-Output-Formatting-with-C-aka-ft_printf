@@ -51,6 +51,10 @@ compile: re main.c
 execute: compile a.out
 	@echo "$(CYN) => Output:\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(NC)"
 	@./a.out
+	@echo "$(CYN)______________$(NC)\n"
+	@echo "$(RED)Removing $(GRA)$(NAME)$(RED), $(GRA)*.o\
+	$(RED) files, and the $(GRA)./a.out$(RED) file ...$(NC)\n"
+	@rm -f a.out $(NAME) *.o
 
 clean:
 	@echo "\n$(RED)Cleaning up Object files ...\n$(NC)"

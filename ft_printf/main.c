@@ -14,9 +14,10 @@
 int	main(void)
 {
 	int a;
-	a = ft_printf("this is %mg\n");
+	char s1[] = "this is a %s with the number %d and %i and also %u in it, with an extra lowerHexa %x and upper hexa %X, and let's not forget ab";
+	a = ft_printf(s1);
 	printf("%d\n", a);
-	a = printf("this is %mg\n");
+	a = printf(s1);
 	printf("%d\n", a);
 
 	return (0);

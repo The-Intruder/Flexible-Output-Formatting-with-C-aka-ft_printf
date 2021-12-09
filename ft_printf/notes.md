@@ -37,6 +37,10 @@ the `#` flag doesn't work with the `%d` type
 - `+` flag **doesn't** work with the `%s` type
 - `0` flag **doesn't** work with the `%s` type
 
+### `%p` type
+
+- `-`
+- ``
 
 
 
