@@ -16,10 +16,10 @@ int	main(void)
 {
 	int	a;
 
-	a = printf("% this is ");
+	a = printf("%-d", INT_MIN);
 	putchar('\n');
 	printf("%d\n", a);
-	a = ft_printf("% this is ");
+	a = ft_printf("%-d", INT_MIN);
 	putchar('\n');
 	printf("%d\n", a);
 	return (0);

@@ -79,7 +79,6 @@ void	ft_putnbr(int n, size_t *outpt_len);
 void	ft_putnbr_presign(int n, t_flags *flags, size_t *outpt_len);
 void	get_unbr_size(unsigned int n, size_t *nbr_size);
 void	ft_putunbr(unsigned int n, size_t *outpt_len);
-void	ft_putunbr_presign(unsigned int n, t_flags *flags, size_t *outpt_len);
 /* FT_PRINTF_UTILS_PROCESSDATA_1ST ------------------------------------------ */
 void	process_data(t_fields *data, va_list *ap, size_t *outpt_len);
 void	process_char(t_fields *data, char c, size_t *outpt_len);

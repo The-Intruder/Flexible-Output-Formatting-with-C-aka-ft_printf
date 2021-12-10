@@ -58,23 +58,13 @@ void	get_unbr_size(unsigned int n, size_t *nbr_size)
 
 void	ft_putunbr(unsigned int n, size_t *outpt_len)
 {
-	if (n >= 0 && n < 10)
+	if (n < 10)
 		ft_putchar(n + 48, outpt_len);
 	else if (n >= 10)
 	{
 		ft_putunbr(n / 10, outpt_len);
 		ft_putunbr(n % 10, outpt_len);
 	}
-}
-
-/* -------------------------------------------------------------------------- */
-
-void	ft_putunbr_presign(unsigned int n, t_flags *flags, size_t *outpt_len)
-{
-	if (flags -> plus && n >= 0)
-		ft_putchar('+', outpt_len);
-	else if (flags -> space && n >= 0)
-		ft_putchar(' ', outpt_len);
 }
 
 /* -------------------------------------------------------------------------- */

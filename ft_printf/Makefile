@@ -66,6 +66,11 @@ fclean: clean
 	@echo "$(RED)Cleaning up the $(GRA)$(NAME)$(RED) archive file ...\n\n$(NC)"
 	@rm -f $(NAME)
 
+exclean:
+	@echo "$(RED)Cleaning up the $(GRA)./a.out$(RED) executable file ...\n\n$(NC)"
+	@rm -f a.out
+
+
 re: fclean all
 
-.PHONY: all clean fclean re compile execute
+.PHONY: all clean fclean re compile execute exclean
