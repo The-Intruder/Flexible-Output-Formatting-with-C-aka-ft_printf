@@ -6,7 +6,7 @@
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 19:15:14 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/09 22:21:41 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/11 15:47:11 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ size_t	get_precision(char **field_ptr)
 	size_t	the_precision;
 
 	the_precision = 0;
-	if (**field_ptr && ft_isdigit(*(*field_ptr)))
+	if (**field_ptr && ft_isdigit(**field_ptr))
 		the_precision = ft_atoi(*field_ptr);
 	while (ft_isdigit(**field_ptr))
 		*field_ptr += 1;
@@ -84,9 +84,13 @@ void	get_data(t_fields *data, t_flags *flags, char *field_ptr, size_t *index)
 	data -> flags = flags;
 	get_flags(&field_ptr, flags);
 	data -> width = get_width(&field_ptr);
-	data -> is_precision = ft_isdot(&field_ptr);
-	if (data -> is_precision)
-		data -> precision = get_precision(&field_ptr);
+	data -> is_precision = 0;
+	while (ft_isdot(&field_ptr))
+	{
+		data -> is_precision = 1;
+		if (data -> is_precision)
+			data -> precision = get_precision(&field_ptr);
+	}
 	data -> type = get_type(&field_ptr);
 	*index += field_ptr - initial_ptr;
 }

@@ -6,7 +6,7 @@
 #    By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by ███████ ██        #+#    #+#              #
-#    Updated: 2021/12/09 23:53:17 by mnaimi           ###   ########.fr        #
+#    Updated: 2021/12/11 11:20:27 by mnaimi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJS) ft_printf.h
 
 compile: re main.c
 	@echo "\n$(YEL)Compiling the $(GRA)main.c $(YEL)...\n\n$(NC)"
-	@$(CC) $(CC_FLAGS) main.c -L. -lftprintf
+	@$(CC) main.c -L. -lftprintf
 
 execute: compile a.out
 	@echo "$(CYN) => Output:\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾$(NC)"
@@ -67,7 +67,7 @@ fclean: clean
 	@rm -f $(NAME)
 
 exclean:
-	@echo "$(RED)Cleaning up the $(GRA)./a.out$(RED) executable file ...\n\n$(NC)"
+	@echo "\n$(RED)Cleaning up the $(GRA)./a.out$(RED) executable file ...\n\n$(NC)"
 	@rm -f a.out
 
 

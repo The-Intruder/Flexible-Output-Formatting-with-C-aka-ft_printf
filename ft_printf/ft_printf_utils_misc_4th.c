@@ -6,7 +6,7 @@
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:40:46 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/09 21:41:16 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/11 13:38:46 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr(int n, size_t *outpt_len)
 	if (n >= 0 && n < 10)
 		ft_putchar(n + 48, outpt_len);
 	else if (n == -2147483648)
-		ft_putstr("2147483648", outpt_len);
+		ft_putstr_len("2147483648", 10, outpt_len);
 	else if (n < 0 && n > -2147483648)
 		ft_putnbr(n * (-1), outpt_len);
 	else if (n >= 10)

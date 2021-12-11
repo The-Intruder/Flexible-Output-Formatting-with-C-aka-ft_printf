@@ -6,7 +6,7 @@
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:35:08 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/09 23:35:30 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/11 13:21:40 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ void	ft_putstr(char *s, size_t *outpt_len)
 void	ft_putstr_len(char *s, size_t len, size_t *outpt_len)
 {
 	if (s == NULL)
-	{
-		write(1, "(null)", 6);
-		len = 6;
-	}
+		write(1, "(null)", len);
 	else
 		write(1, s, len);
 	*outpt_len += len;

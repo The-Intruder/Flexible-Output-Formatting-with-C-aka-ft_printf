@@ -6,7 +6,7 @@
 /*   By: mnaimi <mnaimi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 20:07:32 by mnaimi            #+#    #+#             */
-/*   Updated: 2021/12/09 23:18:36 by mnaimi           ###   ########.fr       */
+/*   Updated: 2021/12/11 13:15:53 by mnaimi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	if (!s)
-		return (0);
+		return (6);
 	i = 0;
 	while (s[i])
 		i++;
