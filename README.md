@@ -1,6 +1,10 @@
-[![mnaimi's 42Project Score](https://badge42.herokuapp.com/api/project/mnaimi/printf)](https://github.com/JaeSeoKim/badge42)
+[![mnaimi's 42Project Score](https://badge42.herokuapp.com/api/project/mnaimi/ft_printf)](https://github.com/JaeSeoKim/badge42)
 
-# *42 Network* version of `printf()`
+***
+_**README.md** not finished yet_
+***
+
+# *42* version of `printf()`
 
 _**Note:** I won't be covering everything about the original `printf()`, just the stuff we need to know to recode the *42 Network* version._
 
