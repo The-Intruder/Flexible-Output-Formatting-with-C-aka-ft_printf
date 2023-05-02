@@ -7,11 +7,9 @@
   <h3 align="center">Flexible Output Formatting with C <em>ft_printf</em></h3>
 
   <p align="center">
-    An Awesome ReadME Generator To Jumpstart Your Projects!
+    Your ultimate printing companion for precise and flexible output formatting. Take control of your program's display with ease, effortlessly handling various data types, modifiers, and flags. Enhance readability, create visually appealing outputs.
     <br/>
     <br/>
-    <a href="https://github.com/The-Intruder/Flexible-Output-Formatting-with-C-aka-ft_printf">View Demo</a>
-    .
     <a href="https://github.com/The-Intruder/Flexible-Output-Formatting-with-C-aka-ft_printf/issues">Report Bug</a>
     .
     <a href="https://github.com/The-Intruder/Flexible-Output-Formatting-with-C-aka-ft_printf/issues">Request Feature</a>
