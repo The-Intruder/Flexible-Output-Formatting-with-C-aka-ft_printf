@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/The-Intruder/Flexible-Output-Formatting-with-C-aka-ft_printf">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://www.iconpacks.net/icons/1/free-printer-icon-1434-thumb.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Flexible Output Formatting with C <em>ft_printf</em></h3>
